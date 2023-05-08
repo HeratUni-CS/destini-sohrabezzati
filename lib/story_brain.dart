@@ -1,5 +1,6 @@
 import 'package:destini/story.dart';
 
+int _storyNumber = 0;
 List<Story> _storyData = [
   Story(
       storyTitle:
@@ -31,3 +32,15 @@ List<Story> _storyData = [
       choice1: 'Restart',
       choice2: '')
 ];
+
+String getStory() {
+  return _storyData[_storyNumber].storyTitle;
+}
+
+String getChoice1() {
+  return _storyData[_storyNumber].choice1;
+}
+
+String getChoice2() {
+  return _storyData[_storyNumber].choice2;
+}
