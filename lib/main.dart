@@ -14,8 +14,6 @@ class Destini extends StatelessWidget {
   }
 }
 
-StoryBrain storyBrain = StoryBrain();
-
 class StoryPage extends StatefulWidget {
   const StoryPage({super.key});
 
@@ -24,6 +22,8 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
+  StoryBrain storyBrain = StoryBrain();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,22 +40,26 @@ class _StoryPageState extends State<StoryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 12,
                 child: Center(
                   child: Text(
-                    '',
-                    style: TextStyle(fontSize: 25.0),
+                    storyBrain.getStory(),
+                    style: const TextStyle(fontSize: 25.0),
                   ),
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    '',
-                    style: TextStyle(fontSize: 20.0),
+                  onPressed: () {
+                    setState(() {
+                      storyBrain.nextStory(1);
+                    });
+                  },
+                  child: Text(
+                    storyBrain.getChoice1(),
+                    style: const TextStyle(fontSize: 20.0),
                   ),
                 ),
               ),
@@ -65,10 +69,19 @@ class _StoryPageState extends State<StoryPage> {
               Expanded(
                 flex: 2,
                 child: Visibility(
-                  visible: true,
+                  visible: storyBrain.buttonShouldBeVisible(),
                   child: TextButton(
-                    onPressed: () {},
-                    child: Text(''),
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(2);
+                      });
+                    },
+                    child: Text(
+                      storyBrain.getChoice2(),
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                      ),
+                    ),
                   ),
                 ),
               ),
