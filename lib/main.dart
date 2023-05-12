@@ -52,6 +52,13 @@ class _StoryPageState extends State<StoryPage> {
               Expanded(
                 flex: 2,
                 child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    elevation: 0,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(0)),
+                    ),
+                  ),
                   onPressed: () {
                     setState(() {
                       storyBrain.nextStory(1);
@@ -59,7 +66,10 @@ class _StoryPageState extends State<StoryPage> {
                   },
                   child: Text(
                     storyBrain.getChoice1(),
-                    style: const TextStyle(fontSize: 20.0),
+                    style: const TextStyle(
+                      color: Colors.black26,
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),
@@ -71,6 +81,13 @@ class _StoryPageState extends State<StoryPage> {
                 child: Visibility(
                   visible: storyBrain.buttonShouldBeVisible(),
                   child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                      ),
+                    ),
                     onPressed: () {
                       setState(() {
                         storyBrain.nextStory(2);
@@ -79,6 +96,7 @@ class _StoryPageState extends State<StoryPage> {
                     child: Text(
                       storyBrain.getChoice2(),
                       style: const TextStyle(
+                        color: Colors.black26,
                         fontSize: 20.0,
                       ),
                     ),
